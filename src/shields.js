@@ -20,7 +20,7 @@ export const shields = [...Array(4).keys()].map((i) => {
     top: 0,
     transform: `translate(${
       space.extraGap / 2 + size + i * (eachGap + size)
-    }px, ${body.height - size * 2.5}px)`, //the '100' in the y translation is the same as cosmoTot's size
+    }px, ${body.height - size * 2.5}px)`,
   });
   return { element, state };
 });
