@@ -1,6 +1,6 @@
 import { body } from "./body.js";
 
-let columns = 7;
+export let columns = 7;
 
 export let rows = 3;
 
@@ -23,10 +23,9 @@ const grid = (i) => ({
 });
 
 export const aliens = [...Array(columns * rows).keys()].map((i) => {
-  const element = document.createElement("div");
-  element.textContent = "👾";
+  const element = document.createElement("img");
+  element.src = "./assets/flower.png";
   Object.assign(element.style, {
-    backgroundColor: "lavenderblush",
     width: `${alienSize}px`,
     height: `${alienSize}px`,
     transform: `translate(${grid(i).x}px, ${grid(i).y}px)`,
@@ -35,7 +34,7 @@ export const aliens = [...Array(columns * rows).keys()].map((i) => {
     top: 0,
     fontSize: "42px",
   });
-  const alienLocation = element.getBoundingClientRect;
+  const location = element.getBoundingClientRect();
   return { element, location };
 });
 
@@ -47,12 +46,12 @@ const speed = 1.5;
 let direction = 1;
 
 export const shimmyAliens = () => {
-  aliens.forEach(
-    (alien, i) =>
-      (alien.element.style.transform = `translate(${
-        grid(i).x + position.x
-      }px, ${grid(i).y + position.y}px)`)
-  );
+  aliens.forEach((alien, i) => {
+    alien.element.style.transform = `translate(${grid(i).x + position.x}px, ${
+      grid(i).y + position.y
+    }px)`;
+    alien.location = alien.element.getBoundingClientRect();
+  });
 
   position.x += direction * speed;
 

@@ -2,7 +2,7 @@ export const body = document.body.getBoundingClientRect();
 
 export const createBody = () => {
   Object.assign(document.body.style, {
-    backgroundColor: "aliceblue",
+    backgroundImage: "url('./assets/sky.png')",
     // backgroundImage: "url(./mandom.png)",
     // backgroundSize: "cover",
     // backgroundPosition: "center",
