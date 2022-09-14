@@ -1,5 +1,24 @@
-export const processCollisions = (bullets, aliens, cosmoTot) => {
+export const processCollisions = (bullets, aliens, cosmoTot, shields) => {
   bullets.forEach((bullet) => {
+    shields.forEach((shield) => {
+      const shieldDimensions = shield.element.getBoundingClientRect();
+      const allBulletDimensions = bullet.element.getBoundingClientRect();
+
+      if (
+        allBulletDimensions.top < shieldDimensions.bottom &&
+        allBulletDimensions.left > shieldDimensions.left &&
+        allBulletDimensions.right < shieldDimensions.right
+      ) {
+        if (shield.state++ > 4) {
+          shield.element.remove();
+          bullet.element.remove();
+        } else {
+          shield.element.src = `./assets/${Math.min(++shield.state, 4)}.png`;
+          bullet.element.remove();
+        }
+      }
+    });
+
     if (bullet.source === "player") {
       const bulletDimensions = bullet.element.getBoundingClientRect();
 
@@ -31,18 +50,5 @@ export const processCollisions = (bullets, aliens, cosmoTot) => {
         bullet.element.remove();
       }
     }
-
-    /* shields.forEach((shield) => {
-        const shieldDimensions = shield.element.getBoundingClientRect();
-  
-        if (
-          bulletDimensions.top < shieldDimensions.bottom &&
-          bulletDimensions.left > shieldDimensions.left &&
-          bulletDimensions.right < shieldDimensions.right
-        ) {
-          shield.element.src = `./${Math.min(++shield.state, 4)}.PNG`;
-          bullet.element.remove();
-        } */
-    //   });
   });
 };

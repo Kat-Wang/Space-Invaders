@@ -3,6 +3,7 @@ import { createAliens, shimmyAliens, aliens } from "./aliens.js";
 import { keydown, createPlayer, playerMovement, cosmoTot } from "./player.js";
 import { bullets, firePlayerBullets, fireAlienBullets } from "./bullets.js";
 import { processCollisions } from "./collisions.js";
+import { shields, createShields } from "./shields.js";
 
 document.addEventListener("keydown", (event) => {
   console.log("keydown", event.key);
@@ -17,6 +18,7 @@ document.addEventListener("keyup", (event) => {
 createBody();
 createAliens();
 createPlayer();
+createShields();
 
 // const createScene = () => {
 //   createBody();
@@ -30,7 +32,7 @@ const animate = (timestamp) => {
   playerMovement();
   firePlayerBullets(timestamp);
   fireAlienBullets(timestamp);
-  processCollisions(bullets, aliens, cosmoTot);
+  processCollisions(bullets, aliens, cosmoTot, shields);
   requestAnimationFrame(animate);
 };
 
