@@ -1,5 +1,5 @@
 # Space-Invaders
-This is a retry of my prior Space Invaders whose code was getting messy. The old files will be added to this repo post-completion.
+This will forever be unfinished because it would take too much time to complete it in raw JS and HTML. I've (hopefully) moved on to bigger and brighter technologies like React and can hopefully come back to making a mini game in the future.
 
 Go here to play it: https://kat-wang.github.io/Space-Invaders/
 
